@@ -1,3 +1,94 @@
 \section{Description of the Algorithm}
 \label{sec:DescriptionOfTheAlgorithm}
 %Describe the algorithm you have used and/or developed. Here you may find it convenient to use pseudocoding. In many cases you can describe the algorithm in the program itself.
+%Compute number of flops
+The algorithm written to solve the problem of computing the $u$ in \fxnote{eq-ref} uses the Gaussian elimination method. However, since the linear problem includes a special matrix, namely a tridiagonal matrix, the number of floating points operation needed to solve this specific problem can be meget reduced by modifying the Gaussian elimination method.
+
+The algorithm used to solve this problem, however still, consists of the same two steps as in the Gaussian elimination: forward substitution and backward substitution. 
+
+Let us first adress the forward substitution. 
+the aim of this first part of the algorithm is essentially to make the matrix $A$ into an upper triangular matrix by suitable subtractions of multiplas of the first row from the other rows in the matrix. 
+This gives rise to a change in the matrix elements. 
+However, the elements in the first row of the matriw will not be changed, and hence we have that
+\begin{align}
+	\tilde{b}_1 = b_1
+\end{align} 
+in which $\tilde{b}_1$ is the element in the first column and first row of the computed triangular matrix.
+By writing out the computed matrix elements after subtracting multipla of the first row from the other rows to create zeros below the diagonal and using the fact that all elements right above and below the diagonal of $A$ is equal to $-1$ whilst the remaining elements are $0$, it is seen that the elements in the diaginal for $i>1$, named $b_i$ in the tridagonal matrix $A$ and $\tilde{b}$ in the computed triangular matrix, get the value
+\begin{align}
+	\tilde{b}_i = b_i - \frac{1}{b_{i-1}}
+	\label{eq:Alg1}
+\end{align} 
+Likewise, the elements in the vector $\vec{f}$ are changed to
+\begin{align}
+	\tilde{f}_i = f_i + \frac{f_{i-1}}{b_{i-1}}
+	\label{eq:Alg2}
+\end{align}
+whilst the elements named $a_i$ in $A$ become equal to zero, and the elements $c_i$ are unchanged. 
+
+This gives rise to the following code for the forward substitution.
+
+\begin{lstlisting}
+// Forward substitution
+
+    double abtemp[n];
+    double btemp = b[0];
+
+    for (int i=1 ; i<n ; i++)
+    {
+        abtemp[i] = - 1/btemp;
+        btemp = b[i] + abtemp[i];
+        f[i] = f[i] - f[i-1]*abtemp[i];
+        b[i] = btemp;
+    }
+\end{lstlisting}
+\fxnote{skriv evt. -= osv i stedet}
+Notice that in the above lines of code, the first element of a vector is $i=0$.
+
+For every time the loop runs, there are 4 \flops . We have chosen to calculate $1/b_{i-1}$, which is used in both \eqref{eq:Alg1} and \eqref{eq:Alg2}, to reduce the number of \flops by 1 for every time the loop is run. 
+Since the loop runs from $i=2$ to $i=n$, if $i=1$ is the first element of a vector, the loop runs $n-1$ times, which gives a total number of \flops for the forward substitution of
+\begin{align}
+	 \# flops = 4(n-1)
+	 \label{eq:Alg3}
+\end{align} 
+In the back substitution, the values of the entrances of vector $\vec{u}$ in \fxnote{eq-ref} are computed. 
+Since the result from the forward substitution is an upper triangular matrix, it is evident that
+\begin{align}
+	u_n = \frac{\tilde{f}_n}{\tilde{b}_n}  
+	\label{eq:Alg4}
+\end{align}
+in which $\tilde{f}_n$ and $\tilde{b}_n$ are elements of $\vec{f}$ and $\vec{b}$ after the forward substitution. 
+From the determined value of $u_n$, the values of the rest of the $u_i$'s can be determined using the fact, that all elements in the upper triangular matrix is zero apart from the elements in the diagonal and the elements just above the diagonal, which all have the value $-1$. 
+This gives
+\begin{align}
+	u_i = \frac{\tilde{f}_i + u_{i+1}}{\tilde{b}_i} 
+	\label{eq:Alg5}
+\end{align}
+yielding a source code:
+\begin{lstlisting}
+// Back substitution
+
+    u[n-1] = f[n-1]/b[n-1];
+
+    for(int i=n-1 ; i>= 0; i--)
+    {
+        u[i] = (f[i]-ac*u[i+1])/b[i];
+    }
+\end{lstlisting} 
+For each time the loop runs, there are $2$ \flops . Like in the forward substitution, the loop runs $n-1$ times, yielding
+\begin{align}
+	 \# flops = 2(n-1)+1
+	 \label{eq:Alg6}
+\end{align} 
+Hence, the total number of \flops for both the forward substitution and back substitution is
+\begin{align}
+	 \# flops_{total} = 4(n-1)+2(n-1)+1 = 6n-6 
+	 \label{eq:Alg7}
+\end{align}  
+which gives that the number of \flops \, goes as $6n$ or $\mathcal{O}(n)$.
+
+\fxnote{compare flops m. GE and LU}
+
+
+
+
