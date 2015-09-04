@@ -1,0 +1,89 @@
+% Dette er LaTeX-versionen af titelbladet for tek-nat-basis-rapporter 2004 efterår
+% Filen kræver:
+% Universitetets logo:  aau-logo.png (for LaTeX) eller aau-logo.ps (for LaTeX)
+% Synopsis: En fil ved navn synopsis.tex
+
+% Udarbejdet af: Hans Httel (hans@cs.auc.dk) 21. maj 2003
+% Rettet af Morten Christophersen (mortench@tnb.aau.dk) 30. nov 2004(ændret til nyt design 2004 efterår)
+
+%\documentclass[11pt]{article}
+%\ifx\pdfoutput\undefined 
+%\usepackage[dvips]{graphicx}
+%\else
+%\usepackage[pdftex]{graphicx} 
+%\usepackage{type1cm} \fi
+%    \usepackage[ansinew]{inputenc}
+%    \usepackage{a4}
+
+%\begin{document} 
+\phantomsection
+\pdfbookmark[0]{Titelblad}{titelblad}
+\thispagestyle{empty}
+%\begin{titlepage}
+\begin{nopagebreak}
+{\samepage 
+\begin{tabular}{r}
+\parbox{\textwidth}{  \raisebox{1mm}{\includegraphics[height=1.2cm]{Figures/UiO_Seal_A_ENG.png}}
+\hfill \parbox{8cm}{\begin{tabular}{l} %4.90
+{\small \textbf{Department of Physics}}\\
+{\small  \textbf{University of Oslo}} \\
+{\small  Sem Sælands vei 24} \\
+{\small  0371 Oslo, Norway} \\
+{\small +47 22 85 64 28} \\
+%{\small Fax 99 40 92 35} \\
+{\small http://www.mn.uio.no/fysikk/english/}
+\end{tabular}}}
+
+\end{tabular}
+
+\begin{tabular}{cc}
+\parbox{8cm}{
+\begin{description}
+\item { \textbf{Course:}}
+
+	Computational Physics\\
+	\hspace{4cm}
+\item { \textbf{Project number:}}
+
+	1 \\
+	\hspace{4cm}
+
+\item { \textbf{Hand-in deadline:}}
+
+   Monday 7 September, 2015\\
+  \hspace{4cm}
+  
+\item { \textbf{Project Members:}}
+
+Birgitte Madsen \\
+Soumya ?? \\
+  \hspace{2cm}
+
+\end{description}
+
+\vspace{0.25cm}
+\begin{description}
+\item { \textbf{Copies:} ??}
+\item { \textbf{Page count:} \pageref{LastPage} } 
+\item { \textbf{Appendices:} ??} 
+\item { \textbf{Completed:} ??} 
+\end{description}
+\vfill } &
+\parbox{7cm}{
+  \vspace{.15cm}
+  \hfill 
+  \begin{tabular}{l}
+  {\textbf{Synopsis:}}\bigskip \\
+  \fbox{
+    \parbox{6.5cm}{\bigskip
+     {\vfill{\small \input{Chapters/Formalia/synopsis.tex}
+     \bigskip}}
+     }}
+   \end{tabular}}
+\end{tabular}}
+\\ \\ \\ \\ \\ 
+
+\noindent{\footnotesize{\textit{The content of the report is freely available, but publication (with source) may only be made with the agreement of the authors.}}}
+\end{nopagebreak}
+%\end{titlepage}
+%\end{document}

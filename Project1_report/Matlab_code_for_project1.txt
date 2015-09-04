@@ -1,0 +1,75 @@
+// plotting the relative error as a fct of log(h):
+
+close all
+clear all
+clc
+%Plot of nummerical approximation with n=10, n=100 and n=1000 and
+%closed-form formula
+
+%Import data and define closed-form solution
+
+filename = 'Results.xlsx';
+sheet = 4;
+xlRange = 'B3:C12';
+
+[v,T,vT] = xlsread(filename, sheet, xlRange);
+x10=v(:,1);y10=v(:,2);
+
+filename = 'Results.xlsx';
+sheet = 5;
+xlRange = 'B3:C102';
+
+[v,T,vT] = xlsread(filename, sheet, xlRange);
+x100=v(:,1);y100=v(:,2);
+
+filename = 'Results.xlsx';
+sheet = 6;
+xlRange = 'B3:C1002';
+
+[v,T,vT] = xlsread(filename, sheet, xlRange);
+x1000=v(:,1);y1000=v(:,2);
+
+x = 0:0.01:1;
+y_exact = 1-(1-exp(-10))*x-exp(-10*x);
+
+%Plot data and closed-form solution
+
+figure
+plot(x10,y10,'-r',x100,y100,'-.b',x1000,y1000,'m',x,y_exact,'k')
+legend('n=10','n=100','n=1000','closed-form solution')
+
+xlim([0 1])
+ylim([-0.1 0.7])
+
+title('Estimation of solution','FontSize',12)
+xlabel('x')
+ylabel('u(x)')
+
+//Plot of relative error
+
+close all
+clear all
+clc
+%Plot of nummerical approximation with n=10, n=100 and n=1000 and
+%closed-form formula
+
+%Import data and define closed-form solution
+
+filename = 'Results.xlsx';
+sheet = 7;
+xlRange = 'C4:D6';
+
+[v,T,vT] = xlsread(filename, sheet, xlRange);
+h=v(:,1);error=v(:,2);
+
+%Plot data and closed-form solution
+
+figure
+plot(h,error,'-ko')
+
+xlim([-4 0])
+ylim([-6 -1])
+
+title('Relative error','FontSize',12)
+xlabel('log(h)')
+ylabel('relative error')

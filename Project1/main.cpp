@@ -46,7 +46,7 @@ int main()
     double abtemp[n];
     double btemp = b[0];
 
-    for (int i=1 ; i<(n-1) ; i++)
+    for (int i=1 ; i<n ; i++)
     {
         abtemp[i] = ac/btemp;
         btemp = b[i] - ac*abtemp[i];
@@ -58,7 +58,7 @@ int main()
 
     u[n-1] = f[n-1]/b[n-1];
 
-    for(int i=n-2 ; i>= 0; i--)
+    for(int i=n-1 ; i>= 0; i--)
     {
         u[i] = (f[i]-ac*u[i+1])/b[i];
     }
@@ -70,11 +70,23 @@ int main()
         v[i] = 1-(1-exp(-10))*(1+i)*h-exp(-10*(1+i)*h);
     }
 
-    cout << "i" << setw(20) << "x" << setw(20) << "u" << setw(25) << "closed-form solution" << endl;
+    //Computing the relative error
+    double relativererror[n];
+    double errortemp;
+
+    for(int i=0 ; i< n; i++)
+    {
+        errortemp = abs((u[i]-v[i])/v[i]);
+        relativererror[i] = log10 (errortemp);
+    }
+
+
+    //Printing results
+    cout << "i" << setw(20) << "x" << setw(20) << "u" << setw(25) << "closed-form solution" << setw(25) << "error" << endl;
 
     for (int i=0; i<n ; i++)
     {
-         cout << i << setw(20) << (i+1)*h << setw(20) << u[i] << setw(20) << v[i] << endl;
+         cout << i << setw(20) << (i+1)*h << setw(20) << u[i] << setw(20) << v[i] << setw(20) << relativererror[i] << endl;
     }
 
 
@@ -86,11 +98,11 @@ int main()
       {
           myfile << "n = " << n << endl;
           myfile << "i" << setw( 15 ) << "x" << setw( 15 )
-                 << "u" <<  endl;
+                 << "u" << setw( 15 ) << "rel error" <<  endl;
           for ( int j = 0; j < n; j++ )
           {
                myfile << j << setw( 15 ) << (j+1)*h << setw( 15 )
-                      << u[j] << endl;
+                      << u[j] << setw( 15 ) << relativererror[j] << endl;
           }
       myfile.close();
       }
