@@ -4,6 +4,7 @@
 using namespace std;
 #include <iomanip>
 using std::setw;
+#include "time.h"
 
 ofstream ofile;
 
@@ -41,6 +42,9 @@ int main()
         f[i] = h*h*func(i,h);
     }
 
+    clock_t start , finish;
+    start = clock();
+
     // Forward substitution
 
     double abtemp[n];
@@ -58,10 +62,13 @@ int main()
 
     u[n-1] = f[n-1]/b[n-1];
 
-    for(int i=n-1 ; i>= 0; i--)
+    for(int i=n-2 ; i>= 0; i--)
     {
         u[i] = (f[i]-ac*u[i+1])/b[i];
     }
+
+    finish = clock();
+    cout << "start=" << start << "finish=" << finish << endl;
 
     //computing the closed-form solution
     double v[n];
@@ -80,7 +87,7 @@ int main()
         relativererror[i] = log10 (errortemp);
     }
 
-
+/*
     //Printing results
     cout << "i" << setw(20) << "x" << setw(20) << "u" << setw(25) << "closed-form solution" << setw(25) << "error" << endl;
 
@@ -88,7 +95,7 @@ int main()
     {
          cout << i << setw(20) << (i+1)*h << setw(20) << u[i] << setw(20) << v[i] << setw(20) << relativererror[i] << endl;
     }
-
+*/
 
 /*
     //Printing results to file

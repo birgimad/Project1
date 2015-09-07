@@ -3,3 +3,82 @@
 %Give a short description of the nature of the problem and the eventual numerical methods, you have used.
 %"Non-computational" algebra
 %Show that you can rewrite this equation as a linear set of equations of the form
+We have the one-dimensional Poisson equation with Dirichlet boundary conditions as
+\begin{align}
+	-u''(x) = f(x), \hspace{0.5cm} x\in(0,1), \hspace{0.5cm} u(0) = u(1) = 0
+	\label{eq:Nature1}
+\end{align}
+We approximate the second derivative of $u$ with
+\begin{align}
+	-\frac{v_{i+1}+v_{i-1}-2v_i}{h^2} = f_i  \hspace{0.5cm} \mathrm{for} \hspace{0.1cm} i=1,\dots, n
+	\label{eq:Nature2}
+\end{align}
+This equation can be rewritten as a linear set of equations of the form
+\begin{align}
+	\v{A}\v{v} = \tilde{\v{b}}
+	\label{eq:Nature3}
+\end{align}
+Where A is an n x n tridiagonal matrix of the form
+\begin{align}
+	\v{A} = \left(\begin{array}{cccccc}
+                           2& -1& 0 &\dots   & \dots &0 \\
+                           -1 & 2 & -1 &0 &\dots &\dots \\
+                           0&-1 &2 & -1 & 0 & \dots \\
+                           & \dots   & \dots &\dots   &\dots & 									\dots \\
+                           0&\dots   &  &-1 &2& -1 \\
+                           0&\dots    &  & 0  &-1 & 2 \\
+                      \end{array} \right)
+	\label{eq:Nature4}
+\end{align}
+To prove this first consider the matrix equation
+\begin{align}
+	\v{A} = \left(\begin{array}{cccccc}
+                           b_1& c_1 & 0 &\dots   & \dots &\dots \\
+                           a_2 & b_2 & c_2 &\dots &\dots &\dots \\
+                           & a_3 & b_3 & c_3 & \dots & \dots \\
+                           & \dots   & \dots &\dots   &\dots & \dots \\
+                           &   &  &a_{n-2}  &b_{n-1}& c_{n-1} \\
+                           &    &  &   &a_n & b_n \\
+                      \end{array} \right)\left(\begin{array}{c}
+                           v_1\\
+                           v_2\\
+                           \dots \\
+                          \dots  \\
+                          \dots \\
+                           v_n\\
+                      \end{array} \right)
+  =\left(\begin{array}{c}
+                           \tilde{b}_1\\
+                           \tilde{b}_2\\
+                           \dots \\
+                           \dots \\
+                          \dots \\
+                           \tilde{b}_n\\
+                      \end{array} \right).
+	\label{eq:Nature5}
+\end{align}
+Solving the above matrix equations gives a set of linear equations as 
+\begin{align}
+	2v_1 - v_2 &= \tilde{b}_1 \\
+	-v_1 + 2v_2 -v_3 &= \tilde{b}_2 \\
+	-v_2 + 2v_3 -v_4 &= \tilde{b}_3 \\
+	\vdots \\
+	-v_{n-1} + 2v_n -v_{n+1} &= \tilde{b}_n 
+	\label{eq:Nature6}
+\end{align}
+In general we can write it as a 
+\begin{align}
+	-v_{i-1} + 2v_i -v_{i+1} &= \tilde{b}_i \qquad \text{for } i = 1,\dots , n
+	\label{eq:Nature7}
+\end{align}
+If we substitute $\tilde{b}_i = f_i h^2$ then \eqref{eq:Nature7} becomes
+\begin{align}
+	-\frac{-v_{i+1}+2v_i-v_{i-1}}{h^2} = f_i  \qquad \text{for } i=1,\dots, n
+	\label{eq:Nature8}
+\end{align}
+\eqref{eq:Nature8} is equal to \eqref{eq:Nature2} for second derivative of u. 
+Thus its proved that the equation for second derivative of u can be rewritten as a set of linear equations of the form
+\begin{align}
+	\v{A} \v{v} = \tilde{\v{b}}
+	\label{eq:Nature9}
+\end{align}

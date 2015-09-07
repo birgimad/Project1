@@ -88,7 +88,7 @@ Hence, the total number of \flops for both the forward substitution and back sub
 which gives that the number of \flops \, goes as $6n$ or $\mathcal{O}(n)$.
 
 \fxnote{compare flops m. GE and LU}
-
+When comparing the number of \flops \, using the above described algorithm to solve \eqref{eq:Nature3} in which $\v{A}$ is a tridiagonal matrix and $\v{v}$ is approximated by the three point formula \eqref{eq:Nature2} with the number of \flops \, in the ordinary Gaussian elimination or LU decomposition, it is evident that this algorithm is much more efficient to solving this specific case, since the number of \flops \, for solving a linear set of equations using the LU decomposition scales as $\mathcal{O}(n^2)$ whilst the number of \flops \, required in the Gaussian elimination is $2n^3 /3 +\mathcal{O}(n^2)$. \cite[173]{CompLectureNotes}
 
 
 

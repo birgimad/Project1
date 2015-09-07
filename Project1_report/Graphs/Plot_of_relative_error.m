@@ -8,7 +8,7 @@ clc
 
 filename = 'Results.xlsx';
 sheet = 7;
-xlRange = 'C4:D6';
+xlRange = 'C4:D8';
 
 [v,T,vT] = xlsread(filename, sheet, xlRange);
 h=v(:,1);error=v(:,2);
@@ -18,8 +18,8 @@ h=v(:,1);error=v(:,2);
 figure
 plot(h,error,'-ko')
 
-xlim([-4 0])
-ylim([-6 -1])
+xlim([-6 0])
+ylim([-10 0])
 
 title('Relative error','FontSize',12)
 xlabel('log(h)')
