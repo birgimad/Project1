@@ -42,8 +42,8 @@ int main()
         f[i] = h*h*func(i,h);
     }
 
-    clock_t start , finish;
-    start = clock();
+clock_t start , finish;
+start = clock();
 
     // Forward substitution
 
@@ -67,8 +67,7 @@ int main()
         u[i] = (f[i]-ac*u[i+1])/b[i];
     }
 
-    finish = clock();
-    cout << "start=" << start << "finish=" << finish << endl;
+finish = clock();
 
     //computing the closed-form solution
     double v[n];
@@ -87,7 +86,9 @@ int main()
         relativererror[i] = log10 (errortemp);
     }
 
-/*
+    //Printing time
+    cout << "time=" << ((finish - start)/CLOCKS_PER_SEC) << endl;
+
     //Printing results
     cout << "i" << setw(20) << "x" << setw(20) << "u" << setw(25) << "closed-form solution" << setw(25) << "error" << endl;
 
@@ -95,7 +96,7 @@ int main()
     {
          cout << i << setw(20) << (i+1)*h << setw(20) << u[i] << setw(20) << v[i] << setw(20) << relativererror[i] << endl;
     }
-*/
+
 
 /*
     //Printing results to file

@@ -1,2 +1,15 @@
 \chapter{Conclusion}
+We were  successfully able to formulate a code to solve the one dimensional Poisson equation. 
+We  compared the precision of numerical solution with the closed form solution for different step length of the variable x and found that a decrease in step length causes an increase in precision. 
+It was found that the relation between the relative error and the logarithm to the step length was a straight line with a slope of 2.  
+%We encountered one or two problems with the solutions we got . The values we got near the terminating point were odd ones. 
+%We are trying to figure out the reason for that .
+
+We learned how to handle arrays and matrices in c++, and that the method for solving a problem should be chosen only after taking into account the nature of the problem as well as the number of \flops\ . 
+
+We got introduced to the library armadillo and few of its functions  that can make ones life easier and found that for this specific problem, it was more efficient to use the algorithm given in this project than solving the problem by the the LU decomposition method given by the Armadillo library.
+This is due to the fact that the Armadillo code for the LU decomposition method uses significantly more \flops \, than our code, resulting in longer execution time for the LU decomposition method. 
+This furthermore, lead to the case that the Armadillo code could not be run for 100,000 grid points, which our code could.  
+
+%I wrote the points that came into my mind but the sentences are not good. Will you make it better...
  

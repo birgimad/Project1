@@ -1,11 +1,13 @@
 \changetocdepth {2}
 \select@language {english}
 \contentsline {chapter}{\chapternumberline {1}Introduction}{1}{chapter.1}
-\contentsline {section}{\numberline {1.1}Nature of the problem}{1}{section.1.1}
-\contentsline {section}{\numberline {1.2}Description of the Algorithm}{1}{section.1.2}
-\contentsline {section}{\numberline {1.3}Source Code}{3}{section.1.3}
-\contentsline {chapter}{\chapternumberline {2}Results}{5}{chapter.2}
-\contentsline {section}{\numberline {2.1}Reliabilty and Numerical Stability of Results}{5}{section.2.1}
-\contentsline {section}{\numberline {2.2}Interpretation of Results}{5}{section.2.2}
-\contentsline {chapter}{\chapternumberline {3}Critique}{7}{chapter.3}
-\contentsline {chapter}{\chapternumberline {4}Conclusion}{9}{chapter.4}
+\contentsline {chapter}{\chapternumberline {2}Method}{3}{chapter.2}
+\contentsline {section}{\numberline {2.1}Nature of the problem}{3}{section.2.1}
+\contentsline {section}{\numberline {2.2}Description of the Algorithm}{4}{section.2.2}
+\contentsline {chapter}{\chapternumberline {3}Results}{7}{chapter.3}
+\contentsline {section}{\numberline {3.1}Interpretation of Results}{7}{section.3.1}
+\contentsline {section}{\numberline {3.2}Comparing the Algorithm to the LU-decomposition Method}{10}{section.3.2}
+\contentsline {chapter}{\chapternumberline {4}Conclusion}{11}{chapter.4}
+\contentsline {chapter}{Bibliography}{13}{section*.3}
+\contentsline {appendix}{\chapternumberline {A}MatLab code for plotting numerical and closed-form solution}{15}{appendix.A}
+\contentsline {appendix}{\chapternumberline {B}MatLab code for plotting the relative error}{17}{appendix.B}

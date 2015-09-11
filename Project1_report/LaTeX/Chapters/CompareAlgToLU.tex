@@ -1,0 +1,24 @@
+\section{Comparing the Algorithm to the LU-decomposition Method}
+\label{sec:CompareAlgToLU}
+
+The elapsed time in the c++ code for both our algorithm and the LU decomposition method provided by the library Armadillo, can be computed by including the following code.
+
+\begin{lstlisting}
+using namespace std;
+#include "time.h"
+int main()
+{
+	\\ declaration of variables
+	...
+	clock_t start , finish;
+	start = clock();
+	// code
+	finish = clock();
+	( (finish - start)/CLOCK_PER_SEC );
+	...
+}
+\end{lstlisting}
+By adding these code lines to the algorithm made in this project, the precision of \textit{start} and \textit{finish} is too bad, and for all investigated $n$'s in this project (see \tabref{tab:IntOfResult1} for $n$ values), the elapsed time is shown to be equal to zero. 
+However, by adding these code lines around the Armadillo code lines for LU decomposition and solving the linear set of equations using the lower triangular and upper triangular matrix, we get an elapsed time of 0.02 s for $n=1,000$, and the Armadillo code could not be run for $n=10^5$.
+
+This yields that our program is more efficient than the LU decomposition method for solving this specific problem. 

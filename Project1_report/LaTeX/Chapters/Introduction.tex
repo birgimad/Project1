@@ -1,8 +1,13 @@
 \chapter{Introduction}
+%An introduction where you explain the aims and rationale for the physics case and what you have done. At the end of the introduction you should give a brief summary of the structure of the report
 
-Hello, we love computational physics!!
-%I write a comment now
+The problem of solving differential equations appear in various places in nature. 
+It is, however, not always possible to solve these differential equations analytically, and one might instead need solve the problem numerically. 
 
-\begin{align*}
-	\sqrt(2) = \sin(\Theta +\phi \cdot 23 )
-\end{align*}
+This project aims to solve the problem of finding a solution for the general one-dimensional Poisson equation with the double differentiated function approximated by the three point formula using less floating point operations (\flops\ ) than needed in the ordinary Gaussian elimination and the LU decomposition method. 
+The number of \flops \, is reduced by identifying that the Poisson equation can be numerically solved by solving a matrix equation in which the matrix is tridiagonal. 
+This ultimately ends out in a number of \flops \, that goes as $\mathcal{O}(n)$ for this specific problem which is evidently a great reduction from the number of \flops \, needed in the other two methods.
+
+Futhermore, another objective of the project is to consider how a decrease of step length of the variable $x$ influences the precision of the numerical solution compared to the closed-form solution. 
+It is seen that for the step lengths chosen, a decrease in step length causes an increase in accuracy of the solution.   
+
